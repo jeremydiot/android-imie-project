@@ -107,11 +107,13 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
                         FragmentManager fragmentManager = activity.getSupportFragmentManager();
 
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.detail_fragment_container, fragment, DetailFragment.FRAGMENT_TAG);
+                        fragmentTransaction.replace(R.id.cl_detail, fragment, DetailFragment.FRAGMENT_TAG);
                         fragmentTransaction.commit();
 
                         Bundle bundle = new Bundle();
-                        bundle.putString(DetailFragment.VEHICLE_PARAM,getIntent().getStringExtra(EXTRA_VEHICLE));
+                        Gson gson = new Gson();
+
+                        bundle.putString(DetailFragment.VEHICLE_PARAM,gson.toJson(vehicle));
                         fragment.setArguments(bundle);
                     }else{
                         Gson gson = new Gson();
