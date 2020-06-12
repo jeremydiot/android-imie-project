@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/layout_vehicle_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_vehicle_height"
+    android:padding="@dimen/item_vehicle_padding"
+    >
+
+    <ImageView
+        android:id="@+id/vehicle_image"
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:adjustViewBounds="true" />
+
+    <TextView
+        android:id="@+id/vehicle_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@id/vehicle_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/vehicle_price"
+
+        android:layout_marginLeft="@dimen/margin_std"
+
+        android:textStyle="bold"
+
+        android:textColor="@android:color/black"
+        />
+
+    <TextView
+        android:id="@+id/vehicle_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@id/vehicle_image"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_name"
+        app:layout_constraintBottom_toTopOf="@id/vehicle_co2_category"
+
+        android:layout_marginLeft="@dimen/margin_std" />
+
+    <TextView
+        android:id="@+id/vehicle_co2_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toRightOf="@id/vehicle_image"
+        app:layout_constraintTop_toBottomOf="@id/vehicle_price"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="@dimen/margin_std" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_vehicle_height">80dp</dimen>
+    <dimen name="item_vehicle_padding">5dp</dimen>
+
+    <dimen name="margin_std">10dp</dimen>
+</resources>
