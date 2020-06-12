@@ -127,36 +127,6 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
                 }
 
             });
-//
-//            textViewLibelleCourse.setOnClickListener(new View.OnClickListener()
-//            {
-//                @Override
-//                public void onClick(View view)
-//                {
-//                    CourseDTO course = listeVehicle.get(getAdapterPosition());
-//
-//                    if (activity.findViewById(R.id.cl_right) != null) {
-//                        DetailFragment fragment = new DetailFragment();
-//                        // transaction :
-//                        FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction.replace(R.id.cl_right, fragment, DetailFragment.FRAGMENT_TAG);
-//                        fragmentTransaction.commit();
-//
-//                        Bundle bundle = new Bundle();
-//                        bundle.putString(DetailFragment.LIBELLE_PARAM,course.intitule);
-//                        fragment.setArguments(bundle);
-//
-//                    } else {
-//                        Intent intent = new Intent(view.getContext(),DetailActivity.class);
-//                        intent.putExtra(DetailActivity.EXTRA_STRING_LIBELLE,course.intitule);
-//                        view.getContext().startActivity(intent);
-//
-//                    }
-//
-//
-//
-//                }
-//            });
         }
     }
 }
