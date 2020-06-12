@@ -3,6 +3,17 @@
     <string name="prefix_vehicle_price"> € / jour</string>
     <string name="prefix_vehicle_co2_category">Catégorie CO2 : </string>
     <string name="ws_connection_error">Erreur de connection au webservice</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="money_symbol"> € </string>
+
+    <string name="name">Nom : </string>
+    <string name="available">Disponible : </string>
+    <string name="price">Prix journalier : </string>
+    <string name="promotion">Promotion : </string>
+    <string name="age">Age minimum : </string>
+    <string name="c02category">Catégorie CO2 : </string>
+    <string name="equipment">Equiments : </string>
+    <string name="option">Options : </string>
+
+    <string name="yes">oui</string>
 </resources>

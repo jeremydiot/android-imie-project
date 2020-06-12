@@ -8,4 +8,8 @@ public class Equipement {
         this.id = id;
         this.nom = nom;
     }
+
+    public String toString(){
+        return this.nom+"\n";
+    }
 }

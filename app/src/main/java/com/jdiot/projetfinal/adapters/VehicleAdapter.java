@@ -8,15 +8,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.jdiot.projetfinal.R;
+import com.jdiot.projetfinal.activities.DetailActivity;
+import com.jdiot.projetfinal.fragments.DetailFragment;
 import com.jdiot.projetfinal.pojo.Vehicle;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -91,7 +99,31 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
                 @Override
                 public void onClick(View view) {
 
+                    Vehicle vehicle = listeVehicle.get(getAdapterPosition());
+
+                    if (activity.findViewById(R.id.cl_detail) != null) {
+
+                        DetailFragment fragment = new DetailFragment();
+                        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.detail_fragment_container, fragment, DetailFragment.FRAGMENT_TAG);
+                        fragmentTransaction.commit();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString(DetailFragment.VEHICLE_PARAM,getIntent().getStringExtra(EXTRA_VEHICLE));
+                        fragment.setArguments(bundle);
+                    }else{
+                        Gson gson = new Gson();
+                        String strVehicle = gson.toJson(vehicle);
+
+                        Intent intent = new Intent(view.getContext(),DetailActivity.class);
+                        intent.putExtra(DetailActivity.EXTRA_VEHICLE, strVehicle);
+                        view.getContext().startActivity(intent);
+                    }
+
                 }
+
             });
 //
 //            textViewLibelleCourse.setOnClickListener(new View.OnClickListener()

@@ -1,14 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="@dimen/margin_std">
 
+<!--        LABELs-->
+        <TextView
+            android:id="@+id/frag_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_name"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/name"
+            />
+
+        <TextView
+            android:id="@+id/frag_available_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_available"
+            app:layout_constraintTop_toBottomOf="@id/frag_name_label"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/available"
+            />
+
+        <TextView
+            android:id="@+id/frag_price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_price"
+            app:layout_constraintTop_toBottomOf="@id/frag_available_label"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/price"
+            />
+
+        <TextView
+            android:id="@+id/frag_promotion_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_promotion"
+            app:layout_constraintTop_toBottomOf="@id/frag_price_label"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/promotion"
+            />
+
+        <TextView
+            android:id="@+id/frag_age_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_age"
+            app:layout_constraintTop_toBottomOf="@id/frag_promotion_label"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/age"
+            />
+
+        <TextView
+            android:id="@+id/frag_c02category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/frag_c02category"
+            app:layout_constraintTop_toBottomOf="@id/frag_age_label"
+            android:layout_margin="@dimen/margin_std"
+            android:width="@dimen/label_frag_width"
+            android:text="@string/prefix_vehicle_co2_category"
+            />
+        
+
+<!--        CONTENTS-->
+
+        <TextView
+            android:id="@+id/frag_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_name_label"
+            app:layout_constraintTop_toTopOf="parent"
+            
+            android:layout_margin="@dimen/margin_std"
+            />
+
+        <TextView
+            android:id="@+id/frag_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_available_label"
+            app:layout_constraintTop_toBottomOf="@id/frag_name"
+            android:layout_margin="@dimen/margin_std"
+            />
+
+        <TextView
+            android:id="@+id/frag_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_price_label"
+            app:layout_constraintTop_toBottomOf="@id/frag_available"
+            android:layout_margin="@dimen/margin_std"
+
+            />
+
+        <TextView
+            android:id="@+id/frag_promotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_promotion_label"
+            app:layout_constraintTop_toBottomOf="@id/frag_price"
+            android:layout_margin="@dimen/margin_std"
+
+
+            />
+
+        <TextView
+            android:id="@+id/frag_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_age_label"
+            app:layout_constraintTop_toBottomOf="@id/frag_promotion"
+            android:layout_margin="@dimen/margin_std"
+            />
+
+        <TextView
+            android:id="@+id/frag_c02category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/frag_c02category_label"
+            app:layout_constraintTop_toBottomOf="@id/frag_age"
+            android:layout_margin="@dimen/margin_std"
+            />
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_frag_equipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/frag_c02category">
+            
+            <TextView
+                android:id="@+id/frag_equipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/frag_equipment_label"
+                android:layout_margin="@dimen/margin_std"
+                />
+
+            <TextView
+                android:id="@+id/frag_equipment_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintRight_toLeftOf="@id/frag_equipment"
+                android:layout_margin="@dimen/margin_std"
+                android:width="@dimen/label_frag_width"
+                android:text="@string/equipment"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/cl_frag_equipment"
+            android:id="@+id/cl_frag_option"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/frag_option"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/frag_option_label"
+                android:layout_margin="@dimen/margin_std"
+                />
+
+            <TextView
+                android:id="@+id/frag_option_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/frag_option"
+                app:layout_constraintTop_toTopOf="parent"
+
+                android:layout_margin="@dimen/margin_std"
+                android:width="@dimen/label_frag_width"
+                android:text="@string/option"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

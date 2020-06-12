@@ -4,63 +4,67 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.jdiot.projetfinal.R;
+import com.jdiot.projetfinal.pojo.Vehicle;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.parceler.Parcels;
+
 public class DetailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final String FRAGMENT_TAG = "FRAGMENT_TAG";
+    public static final String VEHICLE_PARAM = "VEHICLE_PARAM";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView tvName;
+    private TextView tvAvailable;
+    private TextView tvPrice;
+    private TextView tvPromotion;
+    private TextView tvAge;
+    private TextView tvCo2caterory;
+    private TextView tvEquipment;
+    private TextView tvOption;
 
-    public DetailFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetailFragment newInstance(String param1, String param2) {
-        DetailFragment fragment = new DetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_detail, container, false);
+
+        tvName = v.findViewById(R.id.frag_name);
+        tvAvailable = v.findViewById(R.id.frag_available);
+        tvPrice = v.findViewById(R.id.frag_price);
+        tvPromotion = v.findViewById(R.id.frag_promotion);
+        tvAge = v.findViewById(R.id.frag_age);
+        tvCo2caterory = v.findViewById(R.id.frag_c02category);
+        tvEquipment = v.findViewById(R.id.frag_equipment);
+        tvOption = v.findViewById(R.id.frag_option);
+
+        String jsonVehicle = "";
+
+        if(getArguments() != null){
+            jsonVehicle = getArguments().getString(VEHICLE_PARAM);
+        }
+
+        Gson gson = new Gson();
+        Vehicle vehicle = gson.fromJson(jsonVehicle, Vehicle.class);
+
+        tvName.setText(vehicle.nom);
+        if(vehicle.disponible != 0){
+            tvAvailable.setText(v.getResources().getString(R.string.yes));
+        }
+        tvPrice.setText(Integer.toString(vehicle.prixjournalierbase)+v.getResources().getString(R.string.prefix_vehicle_price));
+        tvPromotion.setText(Integer.toString(vehicle.promotion)+v.getResources().getString(R.string.money_symbol));
+        tvAge.setText(Integer.toString(vehicle.agemin));
+        tvCo2caterory.setText(vehicle.categorieco2);
+        tvEquipment.setText(vehicle.equipmentsToString());
+        tvOption.setText(vehicle.optionsToString(v.getResources().getString(R.string.money_symbol)));
+        return v;
     }
 }
