@@ -2,13 +2,12 @@ package com.jdiot.projetfinal.adapters;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,9 +21,6 @@ import com.jdiot.projetfinal.activities.DetailActivity;
 import com.jdiot.projetfinal.fragments.DetailFragment;
 import com.jdiot.projetfinal.pojo.Vehicle;
 import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcel;
-import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -123,6 +119,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
                         intent.putExtra(DetailActivity.EXTRA_VEHICLE, strVehicle);
                         view.getContext().startActivity(intent);
                     }
+
+
+
 
                 }
 
