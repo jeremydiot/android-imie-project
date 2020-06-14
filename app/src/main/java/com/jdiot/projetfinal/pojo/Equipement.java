@@ -12,4 +12,5 @@ public class Equipement {
     public String toString(){
         return this.nom+"\n";
     }
+
 }

@@ -97,6 +97,8 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
 
                     Vehicle vehicle = listeVehicle.get(getAdapterPosition());
 
+
+                    // if landscape orientation
                     if (activity.findViewById(R.id.cl_detail) != null) {
 
                         DetailFragment fragment = new DetailFragment();
@@ -111,6 +113,8 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.VehicleV
 
                         bundle.putString(DetailFragment.VEHICLE_PARAM,gson.toJson(vehicle));
                         fragment.setArguments(bundle);
+
+                    // portrait orientation
                     }else{
                         Gson gson = new Gson();
                         String strVehicle = gson.toJson(vehicle);

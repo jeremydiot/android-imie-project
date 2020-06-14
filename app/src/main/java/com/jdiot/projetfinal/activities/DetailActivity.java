@@ -6,14 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.jdiot.projetfinal.R;
 import com.jdiot.projetfinal.fragments.DetailFragment;
-import com.jdiot.projetfinal.pojo.Vehicle;
-
-import org.parceler.Parcels;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -24,17 +20,20 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // button return to previous activity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // fragment :
+        // fragment
         DetailFragment fragment = new DetailFragment();
-        // fragment manager :
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        // transaction :
+
+        // add fragment dynamically
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.detail_fragment_container, fragment, DetailFragment.FRAGMENT_TAG);
         fragmentTransaction.commit();
 
+        // fragment vehicle info passed to parameter
         Bundle bundle = new Bundle();
         bundle.putString(DetailFragment.VEHICLE_PARAM,getIntent().getStringExtra(EXTRA_VEHICLE));
         fragment.setArguments(bundle);
@@ -42,6 +41,8 @@ public class DetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        // button return to previous activity
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();

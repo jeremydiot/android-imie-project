@@ -14,4 +14,5 @@ public class Option {
     public String toString(String moneySymbol){
         return this.nom+" "+Integer.toString(this.prix)+moneySymbol+"\n";
     }
+
 }

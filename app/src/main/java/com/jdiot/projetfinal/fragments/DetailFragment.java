@@ -1,5 +1,6 @@
 package com.jdiot.projetfinal.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,10 +9,15 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jdiot.projetfinal.R;
+import com.jdiot.projetfinal.bdd.AppDatabaseHelper;
+import com.jdiot.projetfinal.bdd.DTO.VehicleDTO;
 import com.jdiot.projetfinal.pojo.Vehicle;
 
 import org.parceler.Parcels;
@@ -29,8 +35,9 @@ public class DetailFragment extends Fragment {
     private TextView tvCo2caterory;
     private TextView tvEquipment;
     private TextView tvOption;
+    private Switch switchFav;
 
-
+    Vehicle vehicle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +52,7 @@ public class DetailFragment extends Fragment {
         tvCo2caterory = v.findViewById(R.id.frag_c02category);
         tvEquipment = v.findViewById(R.id.frag_equipment);
         tvOption = v.findViewById(R.id.frag_option);
+        switchFav = v.findViewById(R.id.fav_switch);
 
         String jsonVehicle = "";
 
@@ -53,7 +61,7 @@ public class DetailFragment extends Fragment {
         }
 
         Gson gson = new Gson();
-        Vehicle vehicle = gson.fromJson(jsonVehicle, Vehicle.class);
+        vehicle = gson.fromJson(jsonVehicle, Vehicle.class);
 
         tvName.setText(vehicle.nom);
         if(vehicle.disponible != 0){
@@ -65,6 +73,27 @@ public class DetailFragment extends Fragment {
         tvCo2caterory.setText(vehicle.categorieco2);
         tvEquipment.setText(vehicle.equipmentsToString());
         tvOption.setText(vehicle.optionsToString(v.getResources().getString(R.string.money_symbol)));
+
+
+        switchFav.setChecked(AppDatabaseHelper.getDatabase(getActivity()).vehicleDAO().getVehicleById(vehicle.id).size() > 0);
+
+
+        final Activity activity = getActivity();
+
+        switchFav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                VehicleDTO vehicleDTO = vehicle.toDTO();
+
+                if (isChecked == true){
+                    AppDatabaseHelper.getDatabase(activity).vehicleDAO().insert(vehicleDTO);
+                }else {
+                    AppDatabaseHelper.getDatabase(activity).vehicleDAO().delete(vehicleDTO);
+                }
+            }
+        });
+
         return v;
     }
 }

@@ -17,8 +17,6 @@ public class VehicleDTO {
     public int promotion;
     public int agemin;
     public String categorieco2;
-
-//    public List<Equipement> equipements = new ArrayList<>();
-//    public List<Option> options = new ArrayList<>();
-
+    public String equipments;
+    public String options;
 }

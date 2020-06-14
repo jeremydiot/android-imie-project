@@ -1,6 +1,12 @@
 package com.jdiot.projetfinal.pojo;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.jdiot.projetfinal.bdd.DTO.VehicleDTO;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Vehicle {
@@ -50,5 +56,51 @@ public class Vehicle {
         }
 
         return  optionStr;
+    }
+
+    public VehicleDTO toDTO(){
+        VehicleDTO vehicleDTO = new VehicleDTO();
+
+        vehicleDTO.vehicleId = id;
+        vehicleDTO.nom = nom;
+        vehicleDTO.image = image;
+        vehicleDTO.disponible = disponible;
+        vehicleDTO.prixjournalierbase = prixjournalierbase;
+        vehicleDTO.promotion = promotion;
+        vehicleDTO.agemin = agemin;
+        vehicleDTO.categorieco2 = categorieco2;
+
+        Gson gson = new Gson();
+        String strEquipements = gson.toJson(equipements);
+        String strOptions = gson.toJson(options);
+
+        vehicleDTO.equipments = strEquipements;
+        vehicleDTO.options = strOptions;
+
+        return vehicleDTO;
+    }
+
+    public static Vehicle fromDTO(VehicleDTO vehicleDTO){
+
+        Gson gson = new Gson();
+
+        Equipement[] equipements = gson.fromJson(vehicleDTO.equipments,Equipement[].class);
+        List<Equipement> equipementList = Arrays.asList(equipements);
+
+        Option[] options = gson.fromJson(vehicleDTO.options,Option[].class);
+        List<Option> optionList = Arrays.asList(options);
+
+        return  new Vehicle(
+                vehicleDTO.vehicleId,
+                vehicleDTO.nom,
+                vehicleDTO.image,
+                vehicleDTO.disponible,
+                vehicleDTO.prixjournalierbase,
+                vehicleDTO.promotion,
+                vehicleDTO.agemin,
+                vehicleDTO.categorieco2,
+                equipementList,
+                optionList
+                );
     }
 }

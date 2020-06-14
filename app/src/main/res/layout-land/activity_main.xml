@@ -9,24 +9,41 @@
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/cl_detail"
-
+        app:layout_constraintBottom_toTopOf="@id/fav_display_layout"
         android:id="@+id/vehicle_list"
         android:layout_width="0dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fav_display_layout"
         app:layout_constraintLeft_toRightOf="@id/vehicle_list"
 
         android:id="@+id/cl_detail"
         android:layout_width="0dp"
         android:minWidth="600dp"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fav_display_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:background="@android:color/darker_gray">
+        <Switch
+            android:id="@+id/fav_display_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/favorites"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
